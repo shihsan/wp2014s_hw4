@@ -156,7 +156,7 @@ window.fbAsyncInit = function () {
         if (isDragging) {
             ctx.clearRect(0, 0, canvasWidth, canvasHeight);
 
-            var profileIMG = document.getElementById("profile_pic");
+            var profileIMG = document.getElementById("profile");
             console.log(profileIMG);
             //canvas.width = profileIMG.width;
             //canvas.height = profileIMG.height;
