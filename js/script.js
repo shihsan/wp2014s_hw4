@@ -99,7 +99,7 @@ window.fbAsyncInit = function () {
 		}
 	});
 
-	/*--------Canvas Setting----START------*/
+	/*--------Canvas Setting----START----------------------------------------------*/
 	var ctx = document.getElementById('canvas').getContext('2d');
 	ctx.font = '20px "Arial"';
 	ctx.fillText("Move here to start fill with Facebook Profile Picture", 40, 270);
@@ -157,12 +157,12 @@ window.fbAsyncInit = function () {
             ctx.clearRect(0, 0, canvasWidth, canvasHeight);
 
             var profileIMG = document.getElementById("profile");
-            canvas.width = profileIMG.width;
-            canvas.height = profileIMG.height;
+            //canvas.width = profileIMG.width;
+            //canvas.height = profileIMG.height;
             ctx.drawImage(profileIMG,0,0);
             ctx.drawImage(img3, canMouseX - 128 / 2, canMouseY - 120 / 2);
             ctx.drawImage(img2, 0, 0);
-            
+
             var inputedText = $('#inputed').val();
             ctx.fillStyle = "black";
             ctx.font = '20px "微軟正黑體"';
@@ -182,7 +182,7 @@ window.fbAsyncInit = function () {
     $("#canvas").mouseout(function (e) {
         handleMouseOut(e);
     });
-	/*--------Canvas Setting-----END------*/
+	/*--------Canvas Setting-----END---------------------------------------------------*/
 };
 
 (function (d, s, id) {
