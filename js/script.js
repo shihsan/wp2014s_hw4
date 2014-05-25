@@ -167,7 +167,7 @@ window.fbAsyncInit = function () {
             var inputedText = $('#inputed').val();
             ctx.fillStyle = "black";
             ctx.font = '20px "微軟正黑體"';
-            ctx.fillText(inputedText, 300 , 450);
+            ctx.fillText(inputedText, 300 , 445);
         }
     }
 
