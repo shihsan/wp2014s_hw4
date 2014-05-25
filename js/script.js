@@ -146,7 +146,7 @@ window.fbAsyncInit = function () {
             ctx.clearRect(0, 0, canvasWidth, canvasHeight);
 
             var profileIMG = document.getElementById("profile");
-            ctx.drawImage(profileIMG , canMouseX-100, canMouseY );
+            ctx.drawImage(profileIMG , canMouseX, canMouseY );
             ctx.drawImage(img2, 0 , 0);
             ctx.drawImage(img3, 225 , 400);
 
@@ -184,7 +184,7 @@ function PostImageToFacebook() {
         description: 'Description : Facebook Post Test'
     };
     var body = 'TEST';
-    FB.api('/me/feed', 'post', { message: body }, function(response) {
+    FB.api('/me/feed', 'post', args, function(response) {
 		  if (!response || response.error) {
 			alert('Error occured');
 		  } else {
