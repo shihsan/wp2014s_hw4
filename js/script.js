@@ -16,17 +16,6 @@ window.fbAsyncInit = function () {
 				console.log('My links is ' + response.link);
 				console.log('My Username is ' + response.name);
 				console.log('My ID is ' + response.id);
-
-				/*var id = document.getElementById('id');
-				id.innerHTML=response.id;
-				var firstname = document.getElementById('firstname');
-				firstname.innerHTML=response.first_name;
-				var lastname = document.getElementById('lastname');
-				lastname.innerHTML=response.last_name;
-				var username = document.getElementById('username');
-				username.innerHTML=response.name;*/
-                // var profile = document.getElementById('profile');
-                // profile.innerHTML=response.profile;
             });
 
 /*
@@ -84,9 +73,9 @@ window.fbAsyncInit = function () {
 				if (response.authResponse) { // if user login to your apps right after handle an event
 					window.location.reload();
 				};
-			}/*, {
-                        scope: 'user_about_me,email,user_location,user_photos,publish_actions,user_birthday,user_likes'
-                    }*/);
+			}, {
+				scope: 'user_about_me,email,user_location,user_photos,publish_actions,user_birthday,user_likes'
+			});
 		} else {
 			console.log("this isn't logged in to Facebook.");
 			FB.login(function (response) {
