@@ -99,7 +99,13 @@ window.fbAsyncInit = function () {
 		}
 	});
 
-}; //<<<<<<<<<<<<<<<init end
+	/*--------Canvas Setting----START------*/
+	var ctx = document.getElementById('canvas').getContext('2d');
+	ctx.font = '20px "Arial"';
+	ctx.fillText("Move here to start fill with Facebook Profile Picture", 40, 270);
+
+	/*--------Canvas Setting-----END------*/
+};
 
 (function (d, s, id) {
 	var js, fjs = d.getElementsByTagName(s)[0];
