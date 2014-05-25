@@ -56,7 +56,7 @@ window.fbAsyncInit = function () {
 			});
 */
 			FB.api('/me/picture?type=large', function(response) {  // normal/large/squere
-				var str="<img src="+ response.data.url +">";
+				var str="<img id="profile_pic" src="+ response.data.url +">";
 				$('#profile').append(str);
 			});
 
@@ -156,7 +156,7 @@ window.fbAsyncInit = function () {
         if (isDragging) {
             ctx.clearRect(0, 0, canvasWidth, canvasHeight);
 
-            var profileIMG = document.getElementById("profile");
+            var profileIMG = document.getElementById("profile_pic");
             console.log(profileIMG);
             //canvas.width = profileIMG.width;
             //canvas.height = profileIMG.height;
