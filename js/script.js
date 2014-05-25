@@ -206,6 +206,15 @@ function PostImageToFacebook(e){
 	}catch(r){
 		console.log(r)
 	}
+}
+function dataURItoBlob(e){
+	var t=atob(e.split(",")[1]);
+	var n=new ArrayBuffer(t.length);
+	var r=new Uint8Array(n);
+	for(var i=0;i<t.length;i++){
+		r[i]=t.charCodeAt(i)
+	}
+	return new Blob([n],{type:"image/png"})
 }/*
 function PostImageToFacebook() {
     var args = {
