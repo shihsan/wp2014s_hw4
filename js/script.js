@@ -159,9 +159,9 @@ window.fbAsyncInit = function () {
             var profileIMG = document.getElementById("profile");
             //canvas.width = profileIMG.width;
             //canvas.height = profileIMG.height;
-            ctx.drawImage(profileIMG,0,0);
-            ctx.drawImage(img3, canMouseX - 128 / 2, canMouseY - 120 / 2);
-            ctx.drawImage(img2, 0, 0);
+            ctx.drawImage(profileIMG , canMouseX - 128 / 2, canMouseY - 120 / 2);
+            ctx.drawImage(img2, 0 , 0);
+            ctx.drawImage(img3, 225 , 400);
 
             var inputedText = $('#inputed').val();
             ctx.fillStyle = "black";
