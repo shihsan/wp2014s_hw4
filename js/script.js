@@ -13,9 +13,9 @@ window.fbAsyncInit = function () {
 			var accessToken = response.authResponse.accessToken;
 			FB.api('/me', function (response) {
 				console.log(response);
-				console.log('My links is' + response.link);
-				console.log('My Username is' + response.name);
-				console.log('My ID is' + response.id);
+				console.log('My links is ' + response.link);
+				console.log('My Username is ' + response.name);
+				console.log('My ID is ' + response.id);
 
 				/*var id = document.getElementById('id');
 				id.innerHTML=response.id;
@@ -54,12 +54,12 @@ window.fbAsyncInit = function () {
 					console.log(response.data.name);
 				}
 			});
-
+*/
 			FB.api('/me/picture?type=normal', function(response) {  // normal/large/squere
 				var str="<img src="+ response.data.url +">";
-				$('body').append(str);
+				$('profile').append(str);
 			});
-*/
+
 					
 
 					/*FB.api('/me/photos', 'post', {
