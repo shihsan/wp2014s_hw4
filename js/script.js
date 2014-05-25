@@ -108,7 +108,7 @@ window.fbAsyncInit = function () {
     img.src = "img/overlay.png";
 
     var img2 = new Image();
-    img2.src = "img/overlayback.png"
+    img2.src = "img/overlay2.png"
     
     var img3 = new Image();
     img3.src = "img/typography.png"
@@ -128,6 +128,7 @@ window.fbAsyncInit = function () {
     var isDragging = false;
 
     function handleMouseDown(e) {
+    	console.log("clientX="+e.clientX+" clientY="+e.clientY);
         canMouseX = parseInt(e.clientX - offsetX);
         canMouseY = parseInt(e.clientY - offsetY);
         // set the drag flag
