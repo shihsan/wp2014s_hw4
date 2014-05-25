@@ -160,7 +160,7 @@ window.fbAsyncInit = function () {
             console.log(profileIMG);
             //canvas.width = profileIMG.width;
             //canvas.height = profileIMG.height;
-            ctx.drawImage(profileIMG , canMouseX, canMouseY );
+            ctx.drawImage(profileIMG , canMouseX-100, canMouseY );
             ctx.drawImage(img2, 0 , 0);
             ctx.drawImage(img3, 225 , 400);
 
