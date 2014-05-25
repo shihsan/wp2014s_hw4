@@ -56,7 +56,7 @@ window.fbAsyncInit = function () {
 			});
 */
 			FB.api('/me/picture?type=normal', function(response) {  // normal/large/squere
-				var str="<img width="200" height="200" src="+ response.data.url +">";
+				var str="<img width="200" src="+ response.data.url +">";
 				$('#profile').append(str);
 			});
 
