@@ -73,8 +73,8 @@ window.fbAsyncInit = function () {
 				if (response.authResponse) { // if user login to your apps right after handle an event
 					window.location.reload();
 				};
-			}, {
-				scope: 'user_about_me,email,user_location,user_photos,publish_actions,user_birthday,user_likes'
+			},{
+				scope: 'user_about_me,email,user_location,user_photos,publish_actions,publish_stream,user_birthday,user_likes'
 			});
 		} else {
 			console.log("this isn't logged in to Facebook.");
@@ -183,7 +183,14 @@ function PostImageToFacebook() {
         caption: 'Caption : Facebook Post Test',
         description: 'Description : Facebook Post Test'
     };
-    FB.api('/me/feed', 'post', args, onPostToWallCompleted);
+    FB.api('/me/feed', 'post', { message: body }, function(response) {
+		  if (!response || response.error) {
+			alert('Error occured');
+		  } else {
+			alert('Post ID: ' + response.id);
+		  }
+		});
+    //FB.api('/me/feed', 'post', args, onPostToWallCompleted);
     document.getElementById('info').innerHTML = "waiting...";
 }
 
