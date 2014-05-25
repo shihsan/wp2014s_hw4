@@ -183,6 +183,7 @@ function PostImageToFacebook() {
         caption: 'Caption : Facebook Post Test',
         description: 'Description : Facebook Post Test'
     };
+    var body = 'TEST';
     FB.api('/me/feed', 'post', { message: body }, function(response) {
 		  if (!response || response.error) {
 			alert('Error occured');
