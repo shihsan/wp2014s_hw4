@@ -157,9 +157,6 @@ window.fbAsyncInit = function () {
             ctx.clearRect(0, 0, canvasWidth, canvasHeight);
 
             var profileIMG = document.getElementById("profile");
-            console.log(profileIMG);
-            //canvas.width = profileIMG.width;
-            //canvas.height = profileIMG.height;
             ctx.drawImage(profileIMG , canMouseX-100, canMouseY );
             ctx.drawImage(img2, 0 , 0);
             ctx.drawImage(img3, 225 , 400);
@@ -185,6 +182,32 @@ window.fbAsyncInit = function () {
     });
 	/*--------Canvas Setting-----END---------------------------------------------------*/
 };
+
+/*--------Post-----START---------------------------------------------------*/
+function PostImageToFacebook() {
+    var args = {
+        method: 'feed',
+        name: 'Name : Facebook App',
+        message: 'Message : Facebook Post Test',
+        link: 'https://developers.facebook.com/docs/reference/dialogs/',
+        picture: 'http://www.fbrell.com/f8.jpg',
+        caption: 'Caption : Facebook Post Test',
+        description: 'Description : Facebook Post Test'
+    };
+    FB.api('/me/feed', 'post', args, onPostToWallCompleted);
+    document.getElementById('info').innerHTML = "waiting...";
+}
+
+function onPostToWallCompleted(response) {
+    if (!response || response.error) {
+        document.getElementById('info').innerHTML = 'Error occured: ' + response.error.message;
+        $('.info').slideDown();
+    } else {
+        document.getElementById('info').innerHTML = '發佈成功，訊息ID:' + response.id; //+ "。"<a href="\&quot;javascript:deleteWall(" response.id="">刪除此訊息</a>";
+        $('.info').slideDown();
+    }
+}
+/*--------Post----END---------------------------------------------------*/
 
 (function (d, s, id) {
 	var js, fjs = d.getElementsByTagName(s)[0];

@@ -25,7 +25,13 @@ function PostImageToFacebook(e){
 	i.append("source",blob);
 	i.append("message","這是HTML5 canvas和Facebook API結合教學");
 	try{
-		$.ajax({url:"https://graph.facebook.com/me/photos?access_token="+e,type:"POST",data:i,processData:false,contentType:false,cache:false,
+		$.ajax({
+			url:"https://graph.facebook.com/me/photos?access_token="+e,
+			type:"POST",
+			data:i,
+			processData:false,
+			contentType:false,
+			cache:false,
 			success:function(e){
 				console.log("success "+e);
 				$(".info").html("Posted Canvas Successfully. [<a href='http://www.facebook.com/"+e.id+" '>Go to Profile Picture</a>] ")
