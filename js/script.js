@@ -128,7 +128,6 @@ window.fbAsyncInit = function () {
     var isDragging = false;
 
     function handleMouseDown(e) {
-    	console.log("clientX="+e.clientX+" clientY="+e.clientY);
         canMouseX = parseInt(e.clientX - offsetX);
         canMouseY = parseInt(e.clientY - offsetY);
         // set the drag flag
@@ -146,7 +145,7 @@ window.fbAsyncInit = function () {
         canMouseX = parseInt(e.clientX - offsetX);
         canMouseY = parseInt(e.clientY - offsetY);
         // user has left the canvas, so clear the drag flag
-        //isDragging=false;
+        isDragging=false;
     }
 
     function handleMouseMove(e) {
@@ -156,12 +155,14 @@ window.fbAsyncInit = function () {
         // if the drag flag is set, clear the canvas and draw the image
         if (isDragging) {
             ctx.clearRect(0, 0, canvasWidth, canvasHeight);
-            //var profileIMG = document.getElementById("preview1");
-            //canvas.width = profileIMG.width;
-            //canvas.height = profileIMG.height;
-            //ctx.drawImage(profileIMG,0,0);
+
+            var profileIMG = document.getElementById("profile");
+            canvas.width = profileIMG.width;
+            canvas.height = profileIMG.height;
+            ctx.drawImage(profileIMG,0,0);
             ctx.drawImage(img3, canMouseX - 128 / 2, canMouseY - 120 / 2);
             ctx.drawImage(img2, 0, 0);
+            
             var inputedText = $('#inputed').val();
             ctx.fillStyle = "black";
             ctx.font = '20px "微軟正黑體"';
