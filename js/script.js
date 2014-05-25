@@ -173,50 +173,28 @@ window.fbAsyncInit = function () {
 };
 
 /*--------Post-----START---------------------------------------------------*/
-function PostImageToFacebook(e){
-	$(".info").append('<img src="img/loading.gif"/>');
-	var t=document.getElementById("canvas");
-	var n=t.toDataURL("image/png");
-	try{
-		blob=dataURItoBlob(n)
-	}catch(r){
-		console.log(r)
-	}
-	var i=new FormData;
-	i.append("access_token",e);
-	i.append("source",blob);
-	i.append("message","這是HTML5 canvas和Facebook API結合教學");
-	try{
-		$.ajax({
-			url:"https://graph.facebook.com/me/photos?access_token="+e,
-			type:"POST",
-			data:i,
-			processData:false,
-			contentType:false,
-			cache:false,
-			success:function(e){
-				console.log("success "+e);
-				$(".info").html("Posted Canvas Successfully. [<a href='http://www.facebook.com/"+e.id+" '>Go to Profile Picture</a>] ")
-			},error:function(e,t,n){
+function PostImageToFacebook(accessToken) {
+	var postMSG="Your message";
+	var url='https://graph.facebook.com/albumID/photos?access_token='+accessToken+"&message="+postMSG;
+	var imgURL="http://farm4.staticflickr.com/3332/3451193407_b7f047f4b4_o.jpg";
+	var formData = new FormData();
+	formData.append("url",imgURL);
+
+	$.ajax({
+		url: url,
+		data: formData,
+		cache: false,
+		contentType: false,
+		processData: false,
+		type: 'POST',
+
+		success: function(data){
+			alert("POST SUCCESSFUL");
+		},error:function(e,t,n){
 				$(".info").html("error "+n+" Status "+e.status)
-			},complete:function(){
-				$(".info").append("Posted to facebook")
 			}
-		})
-	}catch(r){
-		console.log(r)
-	}
-}
-function dataURItoBlob(e){
-	var t=atob(e.split(",")[1]);
-	var n=new ArrayBuffer(t.length);
-	var r=new Uint8Array(n);
-	for(var i=0;i<t.length;i++){
-		r[i]=t.charCodeAt(i)
-	}
-	return new Blob([n],{type:"image/png"})
-}/*
-function PostImageToFacebook() {
+    });
+/*
     var args = {
         method: 'feed',
         name: 'Name : Facebook App',
@@ -235,7 +213,7 @@ function PostImageToFacebook() {
 		  }
 		});
     //FB.api('/me/feed', 'post', args, onPostToWallCompleted);
-    document.getElementById('info').innerHTML = "waiting...";
+    document.getElementById('info').innerHTML = "waiting...";*/
 }
 
 function onPostToWallCompleted(response) {
@@ -246,7 +224,7 @@ function onPostToWallCompleted(response) {
         document.getElementById('info').innerHTML = '發佈成功，訊息ID:' + response.id; //+ "。"<a href="\&quot;javascript:deleteWall(" response.id="">刪除此訊息</a>";
         $('#info').slideDown();
     }
-}*/
+}
 /*--------Post----END---------------------------------------------------*/
 
 (function (d, s, id) {
