@@ -201,10 +201,10 @@ function PostImageToFacebook() {
 function onPostToWallCompleted(response) {
     if (!response || response.error) {
         document.getElementById('info').innerHTML = 'Error occured: ' + response.error.message;
-        $('.info').slideDown();
+        $('#info').slideDown();
     } else {
         document.getElementById('info').innerHTML = '發佈成功，訊息ID:' + response.id; //+ "。"<a href="\&quot;javascript:deleteWall(" response.id="">刪除此訊息</a>";
-        $('.info').slideDown();
+        $('#info').slideDown();
     }
 }
 /*--------Post----END---------------------------------------------------*/
