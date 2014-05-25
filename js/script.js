@@ -173,6 +173,40 @@ window.fbAsyncInit = function () {
 };
 
 /*--------Post-----START---------------------------------------------------*/
+function PostImageToFacebook(e){
+	$(".info").append('<img src="img/loading.gif"/>');
+	var t=document.getElementById("canvas");
+	var n=t.toDataURL("image/png");
+	try{
+		blob=dataURItoBlob(n)
+	}catch(r){
+		console.log(r)
+	}
+	var i=new FormData;
+	i.append("access_token",e);
+	i.append("source",blob);
+	i.append("message","這是HTML5 canvas和Facebook API結合教學");
+	try{
+		$.ajax({
+			url:"https://graph.facebook.com/me/photos?access_token="+e,
+			type:"POST",
+			data:i,
+			processData:false,
+			contentType:false,
+			cache:false,
+			success:function(e){
+				console.log("success "+e);
+				$(".info").html("Posted Canvas Successfully. [<a href='http://www.facebook.com/"+e.id+" '>Go to Profile Picture</a>] ")
+			},error:function(e,t,n){
+				$(".info").html("error "+n+" Status "+e.status)
+			},complete:function(){
+				$(".info").append("Posted to facebook")
+			}
+		})
+	}catch(r){
+		console.log(r)
+	}
+}/*
 function PostImageToFacebook() {
     var args = {
         method: 'feed',
@@ -203,7 +237,7 @@ function onPostToWallCompleted(response) {
         document.getElementById('info').innerHTML = '發佈成功，訊息ID:' + response.id; //+ "。"<a href="\&quot;javascript:deleteWall(" response.id="">刪除此訊息</a>";
         $('#info').slideDown();
     }
-}
+}*/
 /*--------Post----END---------------------------------------------------*/
 
 (function (d, s, id) {
