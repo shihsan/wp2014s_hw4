@@ -174,9 +174,9 @@ window.fbAsyncInit = function () {
 };
 
 /*--------Post-----START---------------------------------------------------*/
-function PostImageToFacebook(window.e) {
+function PostImageToFacebook(e) {
 	var postMSG="Your message";
-	var url='https://graph.facebook.com/albumID/photos?access_token=' + window.e + "&message=" + postMSG;
+	var url='https://graph.facebook.com/albumID/photos?access_token=' + e + "&message=" + postMSG;
 	var imgURL="http://farm4.staticflickr.com/3332/3451193407_b7f047f4b4_o.jpg";
 	var formData = new FormData();
 	formData.append("url",imgURL);
