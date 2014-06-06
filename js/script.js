@@ -98,7 +98,7 @@ window.fbAsyncInit = function () {
     img.src = "img/overlay.png";
 
     var img2 = new Image();
-    img2.src = "img/overlay2.png"
+    img2.src = "img/frame_1.jpg"
     
     var img3 = new Image();
     img3.src = "img/typography.png"
