@@ -101,7 +101,13 @@ window.fbAsyncInit = function () {
     img2.src = "img/frame_1.png"
     
     var img3 = new Image();
-    img3.src = "img/word.png"
+    img3.src = "img/frame_2.png"
+    
+    var img4 = new Image();
+    img4.src = "img/frame_3.png"
+
+    var img5 = new Image();
+    img5.src = "img/word.png"
 
     var canvas = document.getElementById("canvas");
     var ctx = canvas.getContext("2d");
@@ -149,10 +155,17 @@ window.fbAsyncInit = function () {
             var profileIMG = document.getElementById("profile");
             profileIMG.crossOrigin = "Anonymous"; // 這務必要做，為了讓Facebook的照片能夠crossdomain傳入到你的頁面，CORS Policy請參考https://developer.mozilla.org/en-US/docs/Web/HTML/CORS_enabled_image 
 			
-			console.log(document.getElementById("selectid").value );
             ctx.drawImage(profileIMG , canMouseX , canMouseY );
-            ctx.drawImage(img2, 0 , 0);
-            ctx.drawImage(img3, 125 , 350 ); //225 , 400);
+
+            //choose frame
+            if(document.getElementById("selectid").value === "frame_1")
+            	ctx.drawImage(img2, 0 , 0);
+            else if(document.getElementById("selectid").value === "frame_2")
+            	ctx.drawImage(img3, 0 , 0);
+            else
+            	ctx.drawImage(img4, 0 , 0);
+
+            ctx.drawImage(img5, 125 , 350 ); //word 225 , 400);
 
             var inputedText = $('#inputed').val();
             ctx.fillStyle = "black";
