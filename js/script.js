@@ -206,14 +206,21 @@ function PostImageToFacebook(e) {
         caption: 'Caption : Facebook Post Test',
         description: 'Description : Facebook Post Test'
     };
-    var body = 'TEST';
-    FB.api('/me/feed', 'post', args, function(response) {
-		  if (!response || response.error) {
-			alert('Error occured');
-		  } else {
-			alert('Post ID: ' + response.id);
-		  }
-		});
+    FB.api(
+    	"/me/feed",
+    	"POST",
+    	{
+    		"object": {
+    			"message": "Facebook Post Test",
+    			"link" : 'https://graph.facebook.com/albumID/photos?access_token=' + e 
+    		}
+    	}, function(response) {
+    		if (!response || response.error) {
+    			alert('Error occured');
+    		} else {
+    			alert('Post ID: ' + response.id);
+    		}
+    	});
     //FB.api('/me/feed', 'post', args, onPostToWallCompleted);
     //document.getElementById('info').innerHTML = 'waiting...';
 }
