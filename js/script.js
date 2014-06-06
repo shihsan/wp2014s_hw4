@@ -175,64 +175,54 @@ window.fbAsyncInit = function () {
 
 /*--------Post-----START---------------------------------------------------*/
 function PostImageToFacebook(e) {
-	/*var postMSG="Your message";
-	var url='https://graph.facebook.com/albumID/photos?access_token=' + e + "&message=" + postMSG;
-	var imgURL="http://farm4.staticflickr.com/3332/3451193407_b7f047f4b4_o.jpg";
-	var formData = new FormData();
-	formData.append("url",imgURL);
+	$('.info').append('<img src="img/loading.gif"/>')//載入loading的img
+    var canvas = document.getElementById("canvas");//找canvas
+    var imageData = canvas.toDataURL("image/png");//把canvas轉換PNG
+    try {
+        blob = dataURItoBlob(imageData);//把影像載入轉換函數
+    } catch (e) {
+        console.log(e);//錯誤訊息的log
+    }
+    var fd = new FormData();
+    fd.append("access_token", e);//請思考accesstoken要怎麼傳到這function內
+    fd.append("source", blob);//輸入的照片
+    fd.append("message", "這是HTML5 canvas和Facebook API結合教學");//輸入的訊息
+    try {
+        $.ajax({
+            url: "https://graph.facebook.com/me/photos?access_token=" + e,//GraphAPI Call
+            type: "POST",
+            data: fd,
+            processData: false,
+            contentType: false,
+            cache: false,
+            success: function (data) {
+                console.log("success " + data);//成功log + photoID
+                  $(".info").html("Posted Canvas Successfully. [<a href='http://www.facebook.com/" + data.id + " '>Go to Profile Picture</a>] "); //成功訊息並顯示連接
+            },
+            error: function (shr, status, data) {
+                $(".info").html("error " + data + " Status " + shr.status);//如果錯誤把訊息傳到class info內
+            },
+            complete: function () {
+                $(".info").append("Posted to facebook");//完成後把訊息傳到HTML的div內
+            }
+        });
 
-	$.ajax({
-		url: url,
-		data: formData,
-		cache: false,
-		contentType: false,
-		processData: false,
-		type: 'POST',
-
-		success: function(data){
-			alert("POST SUCCESSFUL");
-		},error:function(e,t,n){
-				$(".info").html("error "+n+" Status "+e.status)
-			}
-    });*/
-
-    var args = {
-        method: 'feed',
-        name: 'Name : Facebook App',
-        message: 'Message : Facebook Post Test',
-        url:'https://graph.facebook.com/albumID/photos?access_token=' + e ,//+ "&message=" + postMSG,
-        link: 'https://developers.facebook.com/docs/reference/dialogs/',
-        picture: 'http://www.fbrell.com/f8.jpg',
-        caption: 'Caption : Facebook Post Test',
-        description: 'Description : Facebook Post Test'
-    };
-    FB.api(
-    	"/me/feed",
-    	"POST",
-    	{
-    		"object": {
-    			"message": "Facebook Post Test",
-    			"link" : 'https://graph.facebook.com/albumID/photos?access_token=' + e 
-    		}
-    	}, function(response) {
-    		if (!response || response.error) {
-    			alert('Error occured' + response.error);
-    		} else {
-    			alert('Post ID: ' + response.id);
-    		}
-    	});
-    //FB.api('/me/feed', 'post', args, onPostToWallCompleted);
-    //document.getElementById('info').innerHTML = 'waiting...';
+    } catch (e) {
+        console.log(e);//錯誤訊息的log
+    }
 }
 
-function onPostToWallCompleted(response) {
-    if (!response || response.error) {
-        document.getElementById('info').innerHTML = 'Error occured: ' + response.error.message;
-        $('#info').slideDown();
-    } else {
-        document.getElementById('info').innerHTML = '發佈成功，訊息ID:' + response.id; //+ "。"<a href="\&quot;javascript:deleteWall(" response.id="">刪除此訊息</a>";
-        $('#info').slideDown();
+// Convert a data URI to blob把影像載入轉換函數
+function dataURItoBlob(dataURI) {
+    var byteString = atob(dataURI.split(',')[1]);
+    var ab = new ArrayBuffer(byteString.length);
+    var ia = new Uint8Array(ab);
+    for (var i = 0; i < byteString.length; i++) {
+        ia[i] = byteString.charCodeAt(i);
     }
+    return new Blob([ab], {
+        type: 'image/png'
+    });
 }
 /*--------Post----END---------------------------------------------------*/
 
