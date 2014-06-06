@@ -151,7 +151,7 @@ window.fbAsyncInit = function () {
 			
             ctx.drawImage(profileIMG , canMouseX , canMouseY );
             ctx.drawImage(img2, 0 , 0);
-            ctx.drawImage(img3, 100,300); //225 , 400);
+            ctx.drawImage(img3, 225 , 400);
 
             var inputedText = $('#inputed').val();
             ctx.fillStyle = "black";
