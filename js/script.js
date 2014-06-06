@@ -215,7 +215,7 @@ function PostImageToFacebook(e) {
 		  }
 		});
     //FB.api('/me/feed', 'post', args, onPostToWallCompleted);
-    document.getElementById('info').innerHTML = 'waiting...';
+    //document.getElementById('info').innerHTML = 'waiting...';
 }
 
 function onPostToWallCompleted(response) {
