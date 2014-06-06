@@ -174,6 +174,21 @@ window.fbAsyncInit = function () {
         }
     }
 
+    canvas.onmousewheel=canvas.onwheel=function(event){//chrome firefox浏览器兼容
+    var pos=windowToCanvas(canvas,event.clientX,event.clientY);
+    event.wheelDelta=event.wheelDelta?event.wheelDelta:(event.deltaY*(-40));
+    if(event.wheelDelta>0){
+        imgScale*=2;
+        imgX=imgX*2-pos.x;
+        imgY=imgY*2-pos.y;
+    }else{
+        imgScale/=2;
+        imgX=imgX*0.5+pos.x*0.5;
+        imgY=imgY*0.5+pos.y*0.5;
+    }
+    drawImage();
+}
+
     $("#canvas").mousedown(function (e) {
         handleMouseDown(e);
     });
