@@ -147,7 +147,9 @@ window.fbAsyncInit = function () {
             ctx.clearRect(0, 0, canvasWidth, canvasHeight);
 
             var profileIMG = document.getElementById("profile");
-            ctx.drawImage(profileIMG , canMouseX, canMouseY );
+            profileIMG.crossOrigin = "Anonymous"; // 這務必要做，為了讓Facebook的照片能夠crossdomain傳入到你的頁面，CORS Policy請參考https://developer.mozilla.org/en-US/docs/Web/HTML/CORS_enabled_image 
+			
+            ctx.drawImage(profileIMG , canMouseX-128/2 , canMouseY-120/2 );
             ctx.drawImage(img2, 0 , 0);
             ctx.drawImage(img3, 225 , 400);
 
@@ -177,7 +179,7 @@ window.fbAsyncInit = function () {
 function PostImageToFacebook(e) {
 	$('.info').append('<img src="img/loading.gif"/>')//載入loading的img
     var canvas = document.getElementById("canvas");//找canvas
-    var imageData = canvas.toDataURL();//把canvas轉換PNG "image/png"
+    var imageData = canvas.toDataURL("image/png");//把canvas轉換PNG
     try {
         blob = dataURItoBlob(imageData);//把影像載入轉換函數
     } catch (e) {
