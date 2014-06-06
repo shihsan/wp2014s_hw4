@@ -174,7 +174,24 @@ window.fbAsyncInit = function () {
         }
     }
 
-    function larger(){
+
+
+    $("#canvas").mousedown(function (e) {
+        handleMouseDown(e);
+    });
+    $("#canvas").mousemove(function (e) {
+        handleMouseMove(e);
+    });
+    $("#canvas").mouseup(function (e) {
+        handleMouseUp(e);
+    });
+    $("#canvas").mouseout(function (e) {
+        handleMouseOut(e);
+    });
+	/*--------Canvas Setting-----END---------------------------------------------------*/
+};
+
+function larger(){
     	console.log("large");
     // canvas.onmousewheel=canvas.onwheel=function(event){//chrome firefox浏览器兼容
     // var pos=windowToCanvas(canvas,event.clientX,event.clientY);
@@ -196,20 +213,6 @@ window.fbAsyncInit = function () {
 
 }
 
-    $("#canvas").mousedown(function (e) {
-        handleMouseDown(e);
-    });
-    $("#canvas").mousemove(function (e) {
-        handleMouseMove(e);
-    });
-    $("#canvas").mouseup(function (e) {
-        handleMouseUp(e);
-    });
-    $("#canvas").mouseout(function (e) {
-        handleMouseOut(e);
-    });
-	/*--------Canvas Setting-----END---------------------------------------------------*/
-};
 
 /*--------Post-----START---------------------------------------------------*/
 function PostImageToFacebook(e) {
