@@ -197,7 +197,7 @@ function larger(){
     // var pos=windowToCanvas(canvas,event.clientX,event.clientY);
     // event.wheelDelta=event.wheelDelta?event.wheelDelta:(event.deltaY*(-40));
     var profileIMG = document.getElementById("profile");
-    console.log("scale = " + profileIMG.imgScale );
+    console.log("scale = " + profileIMG );
     profileIMG.imgScale *= 2;
     //profileIMG.imgX = profileIMG.imgX * 2 - profileIMG.pos.x;
     //profileIMG.imgY = profileIMG.imgY * 2 - profileIMG.pos.y;
