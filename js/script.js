@@ -175,7 +175,7 @@ window.fbAsyncInit = function () {
 
 /*--------Post-----START---------------------------------------------------*/
 function PostImageToFacebook(e) {
-	var postMSG="Your message";
+	/*var postMSG="Your message";
 	var url='https://graph.facebook.com/albumID/photos?access_token=' + e + "&message=" + postMSG;
 	var imgURL="http://farm4.staticflickr.com/3332/3451193407_b7f047f4b4_o.jpg";
 	var formData = new FormData();
@@ -194,12 +194,13 @@ function PostImageToFacebook(e) {
 		},error:function(e,t,n){
 				$(".info").html("error "+n+" Status "+e.status)
 			}
-    });
-/*
+    });*/
+
     var args = {
         method: 'feed',
         name: 'Name : Facebook App',
         message: 'Message : Facebook Post Test',
+        url:'https://graph.facebook.com/albumID/photos?access_token=' + e ,//+ "&message=" + postMSG,
         link: 'https://developers.facebook.com/docs/reference/dialogs/',
         picture: 'http://www.fbrell.com/f8.jpg',
         caption: 'Caption : Facebook Post Test',
@@ -214,7 +215,7 @@ function PostImageToFacebook(e) {
 		  }
 		});
     //FB.api('/me/feed', 'post', args, onPostToWallCompleted);
-    document.getElementById('info').innerHTML = "waiting...";*/
+    document.getElementById('info').innerHTML = "waiting...";
 }
 
 function onPostToWallCompleted(response) {
