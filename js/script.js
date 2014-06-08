@@ -227,7 +227,8 @@ function larger(){
 }
 
 function uploadimg(files){
-    console.log(files);
+    console.log(files[0]);
+    console.log(files[0].type);
 }
 
 /*--------Post-----START---------------------------------------------------*/
