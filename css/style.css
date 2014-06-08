@@ -49,6 +49,11 @@ body {
     padding-bottom: 1em;
 }
 
+#textarea{
+    padding-top: 1.5em;
+    padding-bottom: 1em;
+}
+
 
 /*
 Colorbox Core Style:
