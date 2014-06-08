@@ -1,9 +1,10 @@
 // JavaScript Document
 var uploaded = false;
 var image = new Image(); 
+
 window.fbAsyncInit = function () {
 	FB.init({
-		appId: '566549573460943', //api 2.0 nccu web test
+		appId: '566549573460943',
 		xfbml: true,
 		version: 'v2.0'
 	});
@@ -22,58 +23,14 @@ window.fbAsyncInit = function () {
                 $(".user_name").html("Hello~" + response.name + " ^______^");
             });
 
-/*
-			FB.ui({
-				method: 'share',
-				href: 'https://kangw3n.github.io/facebook/',
-			}, function (response) {
-				if (response && !response.error_code) {
-					alert('Posting completed.');
-				} else {
-					alert('Error while posting.');
-				}
-			});
-*/
-			// FB.ui({
-			// 	method: 'send',
-			// 	link: 'http://www.nytimes.com/2011/06/15/arts/people-argue-just-to-win-scholars-assert.html',
-			// });
-
-
-
-/*
-			FB.api('/me/likes', function (response) {
-				for (var i = 0; i < response.length; i++){
-					console.log(response.data.name);
-				}
-			});
-*/
 			FB.api('/me/picture?type=large', function(response) {  // normal/large/squere
 				//var str="<img src="+ response.data.url +">";
 				$('#profile').attr("src",response.data.url);
 			});
 
-					
-
-					/*FB.api('/me/photos', 'post', {
-						name: 'this is a new photo',
-						message: 'this is parse photo',
-						url: "img/overlay.png"
-					}, function (response) {
-						if (!response || response.error) {
-							alert('Error occured:' + response);
-						} else {
-							alert('Post ID: ' + response.id);
-						}
-					});
-*/					
-
-
-
 		} else if (response.status === 'not_authorized') {
 			console.log("this user is not authorizied your apps");
 			FB.login(function (response) {
-				// FB.api('/me/feed', 'post', {message: 'I\'m started using FB API'});
 				if (response.authResponse) { // if user login to your apps right after handle an event
 					window.location.reload();
 				};
@@ -83,12 +40,12 @@ window.fbAsyncInit = function () {
 		} else {
 			console.log("this isn't logged in to Facebook.");
 			FB.login(function (response) {
-				if (response.authResponse) {
-					window.location.reload();
-				} else {
-                            //alertify.alert('An Error has Occurs,Please Reload your Pages');
-                        }
-                    });
+                if (response.authResponse) { // if user login to your apps right after handle an event
+                    window.location.reload();
+                };
+            },{
+                scope: 'user_about_me,email,user_location,user_photos,publish_actions,publish_stream,user_birthday,user_likes'
+            });
 		}
 	});
 
@@ -192,7 +149,7 @@ window.fbAsyncInit = function () {
         }
     }
 
-    function bigimg(){
+    /*function bigimg(){
     	console.log("bigimg");
     // canvas.onmousewheel=canvas.onwheel=function(event){//chrome firefox浏览器兼容
     // var pos=windowToCanvas(canvas,event.clientX,event.clientY);
@@ -212,7 +169,7 @@ window.fbAsyncInit = function () {
     
     //drawImage();
 
-}
+}*/
 
     $("#canvas").mousedown(function (e) {
         handleMouseDown(e);
@@ -229,10 +186,10 @@ window.fbAsyncInit = function () {
 	/*--------Canvas Setting-----END---------------------------------------------------*/
 };
 
-function larger(){
+/*function larger(){
     console.log("large");
     window.fbAsyncInit.bigimg();
-}
+}*/
 
 function change_select () {
     uploaded = false;
@@ -263,7 +220,7 @@ function uploadimg(files){
     console.log(files[0]);
     console.log(files[0].type);
     uploaded = true;
-    if(files[0].type === "image/png" || files[0].type === "image/jpg" || files[0].type === "image/gif" || files[0].type === "image/bmp"){
+    if(files[0].type === "image/png"){ //|| files[0].type === "image/jpg" || files[0].type === "image/gif" || files[0].type === "image/bmp"){
         
         var reader = new FileReader();
         reader.onload = function(e){  
@@ -273,7 +230,7 @@ function uploadimg(files){
         reader.readAsDataURL(files[0]);
     }
     else{
-        alert("Wrong file type. Must be an image type.");
+        alert("Wrong file type. \nMust be an 'png' image type.");
     }
 }
 /*--------Upload Frame-----END---------------------------------------------------*/

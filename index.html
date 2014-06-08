@@ -34,14 +34,14 @@
             <option value="frame_2">Frame 2</option>
             <option value="frame_3">Frame 3</option>
         </select>
-        <button id="large" onClick="larger()">圖片放大</button>
+        <!--button id="large" onClick="larger()">圖片放大</button-->
         <br>上傳相框：
         <input type="file" id="upload" size="20" onchange="uploadimg(this.files)"/>
         <canvas width="540" height="540" id="canvas"></canvas>
     </section>
     <div class="inputtext" style="width:600px; margin:0 auto;">
         <label for="inputed">輸入客製化文字：
-            <textarea name="inputed" maxlength="5" id="inputed" placeholder="限輸5字"></textarea><!-- 提供使用者輸入文字欄-->
+            <textarea name="inputed" maxlength="5" rows="1" id="inputed" placeholder="限輸5字"></textarea><!-- 提供使用者輸入文字欄-->
         </label>
         <br>
         <button id="sentimg" onClick="PostImageToFacebook(window.e)">Post to Facebook</button><!-- 傳送按鈕-->
