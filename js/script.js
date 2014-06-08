@@ -229,8 +229,15 @@ function larger(){
 function uploadimg(files){
     console.log(files[0]);
     console.log(files[0].type);
-    if(files[0].type === "image/png"){
-        alert("Get!");
+    if(files[0].type === "image/png" || files[0].type === "image/jpg" || files[0].type === "image/gif" || files[0].type === "image/bmp"){
+        var img= document.getElementById("profile");
+        img = document.getElementById("photo");
+          img.classList.add("obj");
+          img.file = files[0];
+          
+          var reader = new FileReader();
+          reader.onload = (function(aImg) { return function(e) { aImg.src = e.target.result; }; })(img);
+          reader.readAsDataURL(files[0]);
     }
     else{
         alert("Wrong file type. Must be an image type.");
