@@ -168,6 +168,8 @@ window.fbAsyncInit = function () {
             //choose frame
             if(uploaded === true){
                 ctx.drawImage(image, 0 , 0);
+                ctx.drawImage(img5, 125 , 350 ); //word
+                ctx.fillText(inputedText, 160 , 400);
             }
             else if(document.getElementById("selectid").value === "frame_1"){
             	ctx.drawImage(img2, 0 , 0);
@@ -248,7 +250,7 @@ function render(src){
             // 可以理解Context是管理员，canvas是房子  
             var ctx = canvas.getContext("2d");  
             // canvas清屏  
-            //ctx.clearRect(0, 0, canvas.width, canvas.height);  
+            ctx.clearRect(0, 0, canvas.width, canvas.height);  
             
             // 将图像绘制到canvas上  
             ctx.drawImage(image, 0, 0, image.width, image.height);  
