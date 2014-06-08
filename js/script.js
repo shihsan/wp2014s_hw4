@@ -237,7 +237,7 @@ function render(src){
         // 绑定 load 事件处理器，加载完成后执行  
         image.onload = function(){  
             // 获取 canvas DOM 对象  
-            //var canvas = document.getElementById("canvas");  
+            var canvas = document.getElementById("canvas");  
             // 如果高度超标  
             if(image.height > 540) {  
                 // 宽度等比例缩放 *=  
@@ -246,7 +246,7 @@ function render(src){
             }  
             // 获取 canvas的 2d 环境对象,  
             // 可以理解Context是管理员，canvas是房子  
-            //var ctx = canvas.getContext("2d");  
+            var ctx = canvas.getContext("2d");  
             // canvas清屏  
             //ctx.clearRect(0, 0, canvas.width, canvas.height);  
             
