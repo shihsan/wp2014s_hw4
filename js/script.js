@@ -229,7 +229,7 @@ function larger(){
 function uploadimg(files){
     console.log(files[0]);
     console.log(files[0].type);
-    if(files[0].type ==== "image.*"){
+    if(files[0].type ==== /image.*/){
         alert("Get!");
     }
     else{
