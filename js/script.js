@@ -115,6 +115,8 @@ window.fbAsyncInit = function () {
             var profileIMG = document.getElementById("profile");
             profileIMG.crossOrigin = "Anonymous"; // 這務必要做，為了讓Facebook的照片能夠crossdomain傳入到你的頁面，CORS Policy請參考https://developer.mozilla.org/en-US/docs/Web/HTML/CORS_enabled_image 
 
+            ctx.drawImage(profileIMG , canMouseX , canMouseY );
+
             var inputedText = $('#inputed').val();
             ctx.fillStyle = "black";
             ctx.font = '20px "微軟正黑體"';
@@ -141,7 +143,6 @@ window.fbAsyncInit = function () {
                 ctx.fillText(inputedText, 135 , 400);
             }
 
-            ctx.drawImage(profileIMG , canMouseX , canMouseY );
         }
     }
 
@@ -205,15 +206,15 @@ function render(src){
             // clear canvas  
             ctx.clearRect(0, 0, canvas.width, canvas.height);  
                
+            ctx.drawImage(image, 0, 0, image.width, image.height); 
         };  
         // 设置src属性，浏览器会自动加载。  
         // 记住必须先绑定事件，才能设置src属性，否则会出同步问题。  
-        image.src = src; 
-        ctx.drawImage(image, 0, 0, image.width, image.height);  
+        image.src = src;  
     };  
 
 function uploadimg(files){
-    console.log(files[0]);
+    console.log(files[0].width );
     console.log(files[0].type);
     uploaded = true;
 
