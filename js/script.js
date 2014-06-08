@@ -233,6 +233,11 @@ function larger(){
     console.log("large");
     window.fbAsyncInit.bigimg();
 }
+
+function change_select () {
+    uploaded = false;
+}
+/*--------Upload Frame-----START---------------------------------------------------*/
 function render(src){  
         // 创建一个 Image 对象  
          
@@ -284,6 +289,7 @@ function uploadimg(files){
         alert("Wrong file type. Must be an image type.");
     }
 }
+/*--------Upload Frame-----END---------------------------------------------------*/
 
 /*--------Post-----START---------------------------------------------------*/
 function PostImageToFacebook(e) {
