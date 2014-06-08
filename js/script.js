@@ -167,7 +167,7 @@ window.fbAsyncInit = function () {
 
             //choose frame
             if(uploaded === true){
-                ctx.drawImage(image, 0 , 0);
+                ctx.drawImage(image, 0 , 0 , image.width, image.height);
                 ctx.drawImage(img5, 125 , 350 ); //word
                 ctx.fillText(inputedText, 160 , 400);
             }
@@ -239,27 +239,20 @@ function change_select () {
 }
 /*--------Upload Frame-----START---------------------------------------------------*/
 function render(src){  
-        // 创建一个 Image 对象  
-         
-        // 绑定 load 事件处理器，加载完成后执行  
+        // execute after loading image  
         image.onload = function(){  
-            // 获取 canvas DOM 对象  
             var canvas = document.getElementById("canvas");  
-            // 如果高度超标  
+            // if image height > 540  
             if(image.height > 540) {  
-                // 宽度等比例缩放 *=  
+                // width 等比例 *=  
                 image.width *= 540 / image.height;  
                 image.height = 540;  
             }  
-            // 获取 canvas的 2d 环境对象,  
-            // 可以理解Context是管理员，canvas是房子  
             var ctx = canvas.getContext("2d");  
-            // canvas清屏  
+            // clear canvas  
             ctx.clearRect(0, 0, canvas.width, canvas.height);  
-            
-            // 将图像绘制到canvas上  
-            ctx.drawImage(image, 0, 0, image.width, image.height);  
-            // !!! 注意，image 没有加入到 dom之中  
+             
+            ctx.drawImage(image, 0, 0, image.width, image.height);   
         };  
         // 设置src属性，浏览器会自动加载。  
         // 记住必须先绑定事件，才能设置src属性，否则会出同步问题。  
@@ -271,18 +264,12 @@ function uploadimg(files){
     console.log(files[0].type);
     uploaded = true;
     if(files[0].type === "image/png" || files[0].type === "image/jpg" || files[0].type === "image/gif" || files[0].type === "image/bmp"){
-        // var img= document.getElementById("profile");
-        // img = document.getElementById("photo");
-        // img.classList.add("obj");
-        // img.file = files[0];
-
-
+        
         var reader = new FileReader();
         reader.onload = function(e){  
-            // 调用前面的 render 函数  
+            // use render function  
             render(e.target.result);  
         }; 
-        //reader.onload = (function(aImg) { return function(e) { aImg.src = e.target.result; };})(img);
         reader.readAsDataURL(files[0]);
     }
     else{
