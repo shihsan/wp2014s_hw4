@@ -233,7 +233,7 @@ function render(src){
             // 获取 canvas DOM 对象  
             var canvas = document.getElementById("canvas");  
             // 如果高度超标  
-            if(image.height > MAX_HEIGHT) {  
+            if(image.height > 540) {  
                 // 宽度等比例缩放 *=  
                 image.width *= 200 / image.height;  
                 image.height = 200;  
