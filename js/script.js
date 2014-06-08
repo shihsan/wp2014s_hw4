@@ -223,7 +223,7 @@ window.fbAsyncInit = function () {
 
 function larger(){
     console.log("large");
-    fbAsyncInit.bigimg();
+    bigimg();
 }
 
 
