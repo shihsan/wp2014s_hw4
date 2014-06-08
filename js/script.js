@@ -115,9 +115,6 @@ window.fbAsyncInit = function () {
             var profileIMG = document.getElementById("profile");
             profileIMG.crossOrigin = "Anonymous"; // 這務必要做，為了讓Facebook的照片能夠crossdomain傳入到你的頁面，CORS Policy請參考https://developer.mozilla.org/en-US/docs/Web/HTML/CORS_enabled_image 
 
-            ctx.drawImage(profileIMG , canMouseX , canMouseY );
-
-
             var inputedText = $('#inputed').val();
             ctx.fillStyle = "black";
             ctx.font = '20px "微軟正黑體"';
@@ -144,8 +141,7 @@ window.fbAsyncInit = function () {
                 ctx.fillText(inputedText, 135 , 400);
             }
 
-
-            
+            ctx.drawImage(profileIMG , canMouseX , canMouseY );
         }
     }
 
