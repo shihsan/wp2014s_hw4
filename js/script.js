@@ -17,7 +17,7 @@ window.fbAsyncInit = function () {
 				console.log('My links is ' + response.link);
 				console.log('My Username is ' + response.name);
 				console.log('My ID is ' + response.id);
-                $(".user_name").html("Hello~" + response.name);
+                $(".user_name").html("Hello~" + response.name + " ^______^");
             });
 
 /*
