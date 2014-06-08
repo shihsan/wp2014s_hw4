@@ -166,13 +166,13 @@ window.fbAsyncInit = function () {
             //choose frame
             if(document.getElementById("selectid").value === "frame_1"){
             	ctx.drawImage(img2, 0 , 0);
-                ctx.drawImage(img5, 125 , 325 ); //word
-                ctx.fillText(inputedText, 160 , 375);
+                ctx.drawImage(img5, 125 , 350 ); //word
+                ctx.fillText(inputedText, 160 , 400);
             }
             else if(document.getElementById("selectid").value === "frame_2"){
             	ctx.drawImage(img3, 0 , 0);
-                ctx.drawImage(img5, 150 , 350 ); //word
-                ctx.fillText(inputedText, 185 , 400);
+                ctx.drawImage(img5, 175 , 325 ); //word
+                ctx.fillText(inputedText, 210 , 375);
             }
             else{
             	ctx.drawImage(img4, 0 , 0);
