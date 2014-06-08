@@ -193,6 +193,7 @@ function change_select () {
 }
 /*--------Upload Frame-----START---------------------------------------------------*/
 function render(src){  
+        image = new Image(); 
         // execute after loading image  
         image.onload = function(){  
             var canvas = document.getElementById("canvas");  
@@ -214,7 +215,7 @@ function render(src){
     };  
 
 function uploadimg(files){
-    console.log(files[0].width );
+    console.log(files[0]);
     console.log(files[0].type);
     uploaded = true;
 
