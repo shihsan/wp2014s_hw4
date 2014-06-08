@@ -1,4 +1,6 @@
 // JavaScript Document
+var uploaded = false;
+var image = new Image(); 
 window.fbAsyncInit = function () {
 	FB.init({
 		appId: '566549573460943', //api 2.0 nccu web test
@@ -155,15 +157,19 @@ window.fbAsyncInit = function () {
 
             var profileIMG = document.getElementById("profile");
             profileIMG.crossOrigin = "Anonymous"; // 這務必要做，為了讓Facebook的照片能夠crossdomain傳入到你的頁面，CORS Policy請參考https://developer.mozilla.org/en-US/docs/Web/HTML/CORS_enabled_image 
-			
+
             ctx.drawImage(profileIMG , canMouseX , canMouseY );
+
 
             var inputedText = $('#inputed').val();
             ctx.fillStyle = "black";
             ctx.font = '20px "微軟正黑體"';
 
             //choose frame
-            if(document.getElementById("selectid").value === "frame_1"){
+            if(uploaded === true){
+                ctx.drawImage(image, 0 , 0);
+            }
+            else if(document.getElementById("selectid").value === "frame_1"){
             	ctx.drawImage(img2, 0 , 0);
                 ctx.drawImage(img5, 125 , 350 ); //word
                 ctx.fillText(inputedText, 160 , 400);
@@ -183,56 +189,6 @@ window.fbAsyncInit = function () {
             
         }
     }
-    function render(src){  
-        // 创建一个 Image 对象  
-        var image = new Image();  
-        // 绑定 load 事件处理器，加载完成后执行  
-        image.onload = function(){  
-            // 获取 canvas DOM 对象  
-            var canvas = document.getElementById("canvas");  
-            // 如果高度超标  
-            if(image.height > 200) {  
-                // 宽度等比例缩放 *=  
-                image.width *= 200 / image.height;  
-                image.height = 200;  
-            }  
-            // 获取 canvas的 2d 环境对象,  
-            // 可以理解Context是管理员，canvas是房子  
-            var ctx = canvas.getContext("2d");  
-            // canvas清屏  
-            ctx.clearRect(0, 0, canvas.width, canvas.height);  
-            
-            // 将图像绘制到canvas上  
-            ctx.drawImage(image, 0, 0, image.width, image.height);  
-            // !!! 注意，image 没有加入到 dom之中  
-        };  
-        // 设置src属性，浏览器会自动加载。  
-        // 记住必须先绑定事件，才能设置src属性，否则会出同步问题。  
-        image.src = src;  
-    };  
-
-function uploadimg(files){
-    console.log(files[0]);
-    console.log(files[0].type);
-    if(files[0].type === "image/png" || files[0].type === "image/jpg" || files[0].type === "image/gif" || files[0].type === "image/bmp"){
-        // var img= document.getElementById("profile");
-        // img = document.getElementById("photo");
-        // img.classList.add("obj");
-        // img.file = files[0];
-
-
-        var reader = new FileReader();
-        reader.onload = function(e){  
-            // 调用前面的 render 函数  
-            render(e.target.result);  
-        }; 
-        //reader.onload = (function(aImg) { return function(e) { aImg.src = e.target.result; };})(img);
-        reader.readAsDataURL(files[0]);
-    }
-    else{
-        alert("Wrong file type. Must be an image type.");
-    }
-}
 
     function bigimg(){
     	console.log("bigimg");
@@ -275,7 +231,57 @@ function larger(){
     console.log("large");
     window.fbAsyncInit.bigimg();
 }
+function render(src){  
+        // 创建一个 Image 对象  
+         
+        // 绑定 load 事件处理器，加载完成后执行  
+        image.onload = function(){  
+            // 获取 canvas DOM 对象  
+            //var canvas = document.getElementById("canvas");  
+            // 如果高度超标  
+            if(image.height > 540) {  
+                // 宽度等比例缩放 *=  
+                image.width *= 540 / image.height;  
+                image.height = 540;  
+            }  
+            // 获取 canvas的 2d 环境对象,  
+            // 可以理解Context是管理员，canvas是房子  
+            //var ctx = canvas.getContext("2d");  
+            // canvas清屏  
+            //ctx.clearRect(0, 0, canvas.width, canvas.height);  
+            
+            // 将图像绘制到canvas上  
+            ctx.drawImage(image, 0, 0, image.width, image.height);  
+            // !!! 注意，image 没有加入到 dom之中  
+        };  
+        // 设置src属性，浏览器会自动加载。  
+        // 记住必须先绑定事件，才能设置src属性，否则会出同步问题。  
+        image.src = src;  
+    };  
 
+function uploadimg(files){
+    console.log(files[0]);
+    console.log(files[0].type);
+    uploaded = true;
+    if(files[0].type === "image/png" || files[0].type === "image/jpg" || files[0].type === "image/gif" || files[0].type === "image/bmp"){
+        // var img= document.getElementById("profile");
+        // img = document.getElementById("photo");
+        // img.classList.add("obj");
+        // img.file = files[0];
+
+
+        var reader = new FileReader();
+        reader.onload = function(e){  
+            // 调用前面的 render 函数  
+            render(e.target.result);  
+        }; 
+        //reader.onload = (function(aImg) { return function(e) { aImg.src = e.target.result; };})(img);
+        reader.readAsDataURL(files[0]);
+    }
+    else{
+        alert("Wrong file type. Must be an image type.");
+    }
+}
 
 /*--------Post-----START---------------------------------------------------*/
 function PostImageToFacebook(e) {
