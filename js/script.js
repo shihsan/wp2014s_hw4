@@ -161,7 +161,6 @@ window.fbAsyncInit = function () {
             var inputedText = $('#inputed').val();
             ctx.fillStyle = "black";
             ctx.font = '20px "微軟正黑體"';
-            
 
             //choose frame
             if(document.getElementById("selectid").value === "frame_1"){
@@ -185,8 +184,8 @@ window.fbAsyncInit = function () {
         }
     }
 
-    function larger(){
-    	console.log("large");
+    function bigimg(){
+    	console.log("bigimg");
     // canvas.onmousewheel=canvas.onwheel=function(event){//chrome firefox浏览器兼容
     // var pos=windowToCanvas(canvas,event.clientX,event.clientY);
     // event.wheelDelta=event.wheelDelta?event.wheelDelta:(event.deltaY*(-40));
@@ -222,6 +221,10 @@ window.fbAsyncInit = function () {
 	/*--------Canvas Setting-----END---------------------------------------------------*/
 };
 
+function larger(){
+    console.log("large");
+    fbAsyncInit.bigimg();
+}
 
 
 
