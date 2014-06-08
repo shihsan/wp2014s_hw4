@@ -229,6 +229,12 @@ function larger(){
 function uploadimg(files){
     console.log(files[0]);
     console.log(files[0].type);
+    if(files[0].type ==== "image/*"){
+        alert("Get!");
+    }
+    else{
+        alert("Wrong file type. Must be an image type.");
+    }
 }
 
 /*--------Post-----START---------------------------------------------------*/
