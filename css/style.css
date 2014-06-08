@@ -3,7 +3,7 @@
 /*Parse*/
 
 body {
-    background: url(http://subtlepatterns.com/patterns/congruent_pentagon.png);/*#eee;*/
+    background: url(http://subtlepatterns.com/patterns/congruent_pentagon.png);
     text-align: center;
     padding: 0 25px;
 }
@@ -12,7 +12,7 @@ body {
     width: 550px;
     margin: auto;
     text-align: left;
-    background: white;
+    background: url(http://subtlepatterns.com/patterns/photography.png);
     padding: 50px 60px;
     border: solid #ddd;
     border-width: 0 1px 1px 1px;
@@ -46,6 +46,7 @@ body {
     font-size: 1.5em;
     color: blue;
     line-height: 1em;
+    padding-bottom: 1em;
 }
 
 
