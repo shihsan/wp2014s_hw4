@@ -220,11 +220,8 @@ function uploadimg(files){
     console.log(files[0]);
     console.log(files[0].type);
     uploaded = true;
-    
-    var imageType = /image.*/;
-    if (files[0].type.match(imageType)){
-    //if(files[0].type === "image/png"){ //|| files[0].type === "image/jpg" || files[0].type === "image/gif" || files[0].type === "image/bmp"){
-        
+
+    if(files[0].type === "image/png" || files[0].type === "image/jpeg" || files[0].type === "image/gif" || files[0].type === "image/bmp"){
         var reader = new FileReader();
         reader.onload = function(e){  
             // use render function  
