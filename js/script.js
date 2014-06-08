@@ -204,12 +204,12 @@ function render(src){
             var ctx = canvas.getContext("2d");  
             // clear canvas  
             ctx.clearRect(0, 0, canvas.width, canvas.height);  
-             
-            ctx.drawImage(image, 0, 0, image.width, image.height);   
+               
         };  
         // 设置src属性，浏览器会自动加载。  
         // 记住必须先绑定事件，才能设置src属性，否则会出同步问题。  
-        image.src = src;  
+        image.src = src; 
+        ctx.drawImage(image, 0, 0, image.width, image.height);  
     };  
 
 function uploadimg(files){
