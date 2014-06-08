@@ -35,7 +35,7 @@
             <option value="frame_3">Frame 3</option>
         </select>
         <button id="large" onClick="larger()">圖片放大</button>
-        <input type="file" id="upload" size="20" />
+        <input type="file" id="upload" size="20" onchange="uploadimg(this.files)"/>
         <canvas width="540" height="540" id="canvas"></canvas>
     </section>
     <div class="inputtext" style="width:600px; margin:0 auto;">

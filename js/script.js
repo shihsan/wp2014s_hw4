@@ -226,7 +226,9 @@ function larger(){
     window.fbAsyncInit.bigimg();
 }
 
-
+function uploadimg(files){
+    console.log(files);
+}
 
 /*--------Post-----START---------------------------------------------------*/
 function PostImageToFacebook(e) {
