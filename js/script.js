@@ -158,20 +158,30 @@ window.fbAsyncInit = function () {
 			
             ctx.drawImage(profileIMG , canMouseX , canMouseY );
 
-            //choose frame
-            if(document.getElementById("selectid").value === "frame_1")
-            	ctx.drawImage(img2, 0 , 0);
-            else if(document.getElementById("selectid").value === "frame_2")
-            	ctx.drawImage(img3, 0 , 0);
-            else
-            	ctx.drawImage(img4, 0 , 0);
-
-            ctx.drawImage(img5, 125 , 350 ); //word 225 , 400);
-
             var inputedText = $('#inputed').val();
             ctx.fillStyle = "black";
             ctx.font = '20px "微軟正黑體"';
-            ctx.fillText(inputedText, 160 , 400);
+            
+
+            //choose frame
+            if(document.getElementById("selectid").value === "frame_1"){
+            	ctx.drawImage(img2, 0 , 0);
+                ctx.drawImage(img5, 125 , 325 ); //word
+                ctx.fillText(inputedText, 160 , 375);
+            }
+            else if(document.getElementById("selectid").value === "frame_2"){
+            	ctx.drawImage(img3, 0 , 0);
+                ctx.drawImage(img5, 150 , 350 ); //word
+                ctx.fillText(inputedText, 185 , 400);
+            }
+            else{
+            	ctx.drawImage(img4, 0 , 0);
+                ctx.drawImage(img5, 100 , 350 ); //word
+                ctx.fillText(inputedText, 135 , 400);
+            }
+
+
+            
         }
     }
 
